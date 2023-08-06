@@ -17,3 +17,8 @@ func _process(delta):
 	if dist >= MAX_DISTANCE:
 		print(dist)
 		queue_free()
+
+
+func _on_body_entered(body):
+	print("Remove Laser ", body)
+	queue_free()

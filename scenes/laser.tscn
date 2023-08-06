@@ -24,3 +24,5 @@ texture = ExtResource("1_fuf3a")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.984314, 0, 0, 1)
 texture = ExtResource("2_q3q5q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
