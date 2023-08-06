@@ -28,3 +28,17 @@ texture = ExtResource("3_7t22a")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_b8m35")
+
+[node name="Pistols" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Pistols"]
+position = Vector2(21, -11)
+
+[node name="Marker2D2" type="Marker2D" parent="Pistols"]
+position = Vector2(21, 10)
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

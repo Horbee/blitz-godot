@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dljjsl5tr0u1r"]
+
+[ext_resource type="Script" path="res://scripts/laser.gd" id="1_e2qq5"]
+[ext_resource type="Texture2D" uid="uid://ftcdyanowo7p" path="res://assets/img/gunFlash1.png" id="1_fuf3a"]
+[ext_resource type="Texture2D" uid="uid://cdxtpu2o78lqh" path="res://assets/img/circle-light.png" id="2_q3q5q"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eq43v"]
+radius = 4.0
+height = 18.0
+
+[node name="Laser" type="Area2D"]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("1_e2qq5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_eq43v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-16, -1)
+texture = ExtResource("1_fuf3a")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.984314, 0, 0, 1)
+texture = ExtResource("2_q3q5q")
