@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbx2x14lmc836"]
+[gd_scene load_steps=10 format=3 uid="uid://cbx2x14lmc836"]
 
 [ext_resource type="Texture2D" uid="uid://do07qgb8o3st0" path="res://assets/img/ground2.png" id="1_lgyc7"]
 [ext_resource type="PackedScene" uid="uid://bart6y0bhlhe5" path="res://scenes/player.tscn" id="1_me3xk"]
 [ext_resource type="Texture2D" uid="uid://8cpnhtmo37n3" path="res://assets/img/wall1.png" id="2_lxipj"]
+[ext_resource type="PackedScene" uid="uid://bphx26ga3jhws" path="res://scenes/lamp.tscn" id="4_pi1yk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nejah"]
 texture = ExtResource("1_lgyc7")
@@ -13,13 +14,23 @@ texture_region_size = Vector2i(256, 256)
 tile_size = Vector2i(256, 256)
 sources/0 = SubResource("TileSetAtlasSource_nejah")
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gkhdb"]
+polygon = PackedVector2Array(-65, -65, 65, -65, 65, 65, -65, 65)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sy20i"]
 texture = ExtResource("2_lxipj")
 texture_region_size = Vector2i(130, 130)
 0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_gkhdb")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-65, -65, 65, -65, 65, 65, -65, 65)
 
 [sub_resource type="TileSet" id="TileSet_ebnfa"]
 tile_size = Vector2i(130, 130)
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 15
 sources/0 = SubResource("TileSetAtlasSource_sy20i")
 
 [node name="Node2D" type="Node2D"]
@@ -40,3 +51,35 @@ position = Vector2(4, 66)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.745098, 0.745098, 0.745098, 1)
+blend_mode = 1
+
+[node name="Lamp" parent="." instance=ExtResource("4_pi1yk")]
+position = Vector2(-199, 519)
+rotation = 3.14159
+metadata/_edit_lock_ = true
+
+[node name="Lamp5" parent="." instance=ExtResource("4_pi1yk")]
+position = Vector2(-516, 125)
+rotation = -1.5708
+metadata/_edit_lock_ = true
+
+[node name="Lamp6" parent="." instance=ExtResource("4_pi1yk")]
+position = Vector2(517, 133)
+rotation = 1.5708
+metadata/_edit_lock_ = true
+
+[node name="Lamp3" parent="." instance=ExtResource("4_pi1yk")]
+position = Vector2(213, 519)
+rotation = 3.14159
+metadata/_edit_lock_ = true
+
+[node name="Lamp2" parent="." instance=ExtResource("4_pi1yk")]
+position = Vector2(-211, -252)
+metadata/_edit_lock_ = true
+
+[node name="Lamp4" parent="." instance=ExtResource("4_pi1yk")]
+position = Vector2(243, -256)
+metadata/_edit_lock_ = true

@@ -1,19 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://bart6y0bhlhe5"]
+[gd_scene load_steps=6 format=3 uid="uid://bart6y0bhlhe5"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ka2lo"]
 [ext_resource type="Texture2D" uid="uid://bvlksgaxhoes0" path="res://assets/img/player/idle.png" id="1_qn8uo"]
+[ext_resource type="Texture2D" uid="uid://cdxtpu2o78lqh" path="res://assets/img/circle-light.png" id="3_7t22a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8cbil"]
 radius = 7.0
 height = 26.0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b8m35"]
+polygon = PackedVector2Array(21, -13, 21, -9, 12, -8, 6, -8, 7, -2, 7, 4, 6, 6, 12, 6, 15, 6, 21, 7, 21, 11, 9, 11, 4, 10, 1, 13, -2, 13, -6, 8, -7, 3, -7, -4, -6, -10, -1, -13, 4, -12, 6, -12, 11, -13)
+
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 30
 script = ExtResource("1_ka2lo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8cbil")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, 0)
 rotation = 1.5708
 texture = ExtResource("1_qn8uo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_8cbil")
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("3_7t22a")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_b8m35")
