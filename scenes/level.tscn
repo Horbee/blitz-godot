@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbx2x14lmc836"]
+
+[ext_resource type="Texture2D" uid="uid://do07qgb8o3st0" path="res://assets/img/ground2.png" id="1_lgyc7"]
+[ext_resource type="PackedScene" uid="uid://bart6y0bhlhe5" path="res://scenes/player.tscn" id="1_me3xk"]
+[ext_resource type="Texture2D" uid="uid://8cpnhtmo37n3" path="res://assets/img/wall1.png" id="2_lxipj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nejah"]
+texture = ExtResource("1_lgyc7")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_w827g"]
+tile_size = Vector2i(256, 256)
+sources/0 = SubResource("TileSetAtlasSource_nejah")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sy20i"]
+texture = ExtResource("2_lxipj")
+texture_region_size = Vector2i(130, 130)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ebnfa"]
+tile_size = Vector2i(130, 130)
+sources/0 = SubResource("TileSetAtlasSource_sy20i")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GroundTileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_w827g")
+format = 2
+layer_0/tile_data = PackedInt32Array(-2, 0, 0, -1, 0, 0, -65536, 0, 0, 0, 0, 0, 65535, 0, 0, 65534, 0, 0, -65535, 0, 0, 1, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0)
+
+[node name="WallTileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_ebnfa")
+format = 2
+layer_0/tile_data = PackedInt32Array(-131077, 0, 0, -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -65541, 0, 0, -5, 0, 0, 65531, 0, 0, 131067, 0, 0, 196603, 0, 0, 262139, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 196612, 0, 0, 131076, 0, 0, 65540, 0, 0, 4, 0, 0, -65532, 0, 0, -131068, 0, 0, -196604, 0, 0, -196605, 0, 0, -196606, 0, 0, -196607, 0, 0, -131073, 0, 0, -196608, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("1_me3xk")]
+position = Vector2(4, 66)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
